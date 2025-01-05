@@ -66,7 +66,6 @@ Ensure the following tools are installed:
     ```bash
     npm start
     ```
-    The backend will run on [http://localhost:5000](http://localhost:5000).
 
 ### Frontend Setup
 
@@ -84,7 +83,6 @@ Ensure the following tools are installed:
     ```bash
     npm start
     ```
-    The frontend will run on [http://localhost:3000](http://localhost:3000).
 
 ### Testing the Application
 
