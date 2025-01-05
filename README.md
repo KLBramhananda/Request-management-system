@@ -93,8 +93,8 @@ This project is a full-stack **Pull Request Management System** developed using 
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/your-username/your-repository.git
-   cd your-repository/backend
+   git clone https://github.com/KLBramhananda/Request-management-system.git
+   cd Request-management-system/backend
 
 ## Overview
 
