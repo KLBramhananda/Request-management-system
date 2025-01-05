@@ -1,4 +1,4 @@
-# MERN Pull Request System
+# Request Management System
 
 A full-stack web application built using the MERN stack (MongoDB, Express, React, Node.js) for managing pull requests, comments, and approvals.
 
