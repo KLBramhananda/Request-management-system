@@ -1,98 +1,145 @@
-# Pull Request Management System
+# MERN Pull Request System
 
-## Overview
+A full-stack web application built using the MERN stack (MongoDB, Express, React, Node.js) for managing pull requests, comments, and approvals.
 
-This project is a full-stack **Pull Request Management System** developed using the **MERN** stack (MongoDB, Express, React, Node.js). The system allows users to create, review, approve, or reject pull requests with both parallel and sequential approval processes. The application features real-time notifications, user authentication and role-based authorization, and ensures data integrity with appropriate validation and security measures.
+## Project Structure
 
----
+### Backend (`/backend`): Node.js + Express + MongoDB
+- `server.js`: Main entry point of the backend server.
+- `routes/`: API route handlers.
+  - `pullRequests.js`: Route for managing pull requests.
+  - `comments.js`: Route for managing comments on pull requests.
+  - `approvals.js`: Route for managing approvals on pull requests.
+- `models/`: Mongoose models for data structure.
+  - `User.js`: User schema and model.
+  - `Role.js`: Role schema and model.
+  - `PullRequest.js`: Pull request schema and model.
+  - `Review.js`: Review schema and model.
+  - `Approval.js`: Approval schema and model.
+- `middleware/`: Middleware functions.
+  - `auth.js`: Authentication middleware to protect routes.
+- `config/`: Configuration files.
+  - `db.js`: MongoDB connection setup.
 
-## Table of Contents
+### Frontend (`/frontend`): React
+- `src/`: React source code.
+  - `App.js`: Main app component.
+  - `components/`: React components.
+    - `PullRequestList.jsx`: Displays list of pull requests.
+    - `PullRequestForm.jsx`: Form for creating pull requests.
+    - `CommentsSection.jsx`: Section for displaying and adding comments.
+    - `ApprovalSection.jsx`: Section for displaying and adding approvals.
+  - `services/`: API services to interact with the backend.
+    - `api.js`: Handles API requests using Axios.
 
-- [Technologies Used](#technologies-used)
-- [Features](#features)
-- [System Design](#system-design)
-- [Backend Setup](#backend-setup)
-- [Frontend Setup](#frontend-setup)
-- [API Endpoints](#api-endpoints)
-- [Real-Time Notifications](#real-time-notifications)
-- [Security Features](#security-features)
-- [Testing](#testing)
-- [Contributions](#contributions)
-- [License](#license)
+## Prerequisites
 
----
+Ensure the following tools are installed:
 
-## Technologies Used
+- [Node.js](https://nodejs.org/) (v16.x or higher)
+- [MongoDB](https://www.mongodb.com/) (locally or use MongoDB Atlas)
+- [Git](https://git-scm.com/)
 
-- **Backend:**  
-  - Node.js
-  - Express.js
-  - MongoDB
-  - JWT Authentication (JSON Web Tokens)
-  - Bcrypt.js (for password hashing)
+## Getting Started
 
-- **Frontend:**  
-  - React.js
-  - React Router
-  - Axios (for HTTP requests)
-  - WebSocket (for real-time notifications)
+### Backend Setup
 
-- **Version Control & Hosting:**  
-  - Git & GitHub
-  - Heroku for deployment (optional)
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/KLBramhananda/Request-management-system
+    cd backend
+    ```
 
-- **Development Tools:**  
-  - VS Code
-  - Postman (for API testing)
-  - MongoDB Atlas (for database hosting)
+2. Install backend dependencies:
+    ```bash
+    npm install
+    ```
 
----
+3. Set up environment variables:
+    Create a `.env` file in the `/backend` directory with the following content:
+    ```bash
+    PORT=5000
+    MONGO_URI=mongodb://localhost:27017/mern_pr_system
+    ```
+
+4. Start the backend server:
+    ```bash
+    npm start
+    ```
+    The backend will run on [http://localhost:5000](http://localhost:5000).
+
+### Frontend Setup
+
+1. Navigate to the frontend directory:
+    ```bash
+    cd ../frontend
+    ```
+
+2. Install frontend dependencies:
+    ```bash
+    npm install
+    ```
+
+3. Start the frontend React app:
+    ```bash
+    npm start
+    ```
+    The frontend will run on [http://localhost:3000](http://localhost:3000).
+
+### Testing the Application
+
+- Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to view the application.
+- You can test the backend API endpoints using Postman (e.g., [http://localhost:5000/api/pull-requests](http://localhost:5000/api/pull-requests)).
+
+### Database Setup
+
+Make sure MongoDB is running locally or configure MongoDB Atlas for cloud-based storage. The connection string is provided in the `.env` file.
 
 ## Features
 
-- **User Authentication & Authorization:**  
-  - Users can register, log in, and access their dashboard.
-  - Role-based access control (admin, reviewer, etc.) using JWT.
+- **Pull Requests**: View, create, update, and delete pull requests.
+- **Comments**: Add comments to pull requests for review.
+- **Approvals**: Approve or reject pull requests based on reviews.
+- **User Roles**: Support for different roles like Admin and User for access control.
 
-- **Pull Request Management:**  
-  - Users can create, update, and delete pull requests.
-  - PRs can be submitted with either parallel or sequential approvers.
-  - PR status updates dynamically based on approval/rejection.
+## Scripts
 
-- **Commenting on PRs:**  
-  - Users can add comments to a PR for discussion and review.
+### Backend
+- `npm start`: Starts the backend server.
 
-- **Approval System:**  
-  - Approvers can approve or reject pull requests.
-  - Parallel approval: All approvers approve independently.
-  - Sequential approval: Approvers approve in sequence.
+### Frontend
+- `npm start`: Starts the React development server.
 
-- **Real-Time Notifications:**  
-  - WebSocket integration to notify users about status changes (e.g., PR approval/rejection).
+## Environment Variables
 
-- **Security Features:**  
-  - Password hashing using Bcrypt.js.
-  - JWT for session management and role-based authorization.
+Create a `.env` file in the `/backend` directory with the following variables:
+
+- `PORT`: The port on which the backend server runs (default: 5000).
+- `MONGO_URI`: MongoDB connection string for the backend to connect to the database.
+
+## Dependencies
+
+### Backend
+- `express`: Web framework for Node.js.
+- `mongoose`: MongoDB object modeling tool.
+- `cors`: Middleware for handling Cross-Origin Resource Sharing.
+- `body-parser`: Middleware for parsing incoming request bodies.
+- `jsonwebtoken`: Library for generating and verifying JWT tokens.
+- `bcryptjs`: Library for password hashing.
+
+### Frontend
+- `react`: JavaScript library for building user interfaces.
+- `react-dom`: React package for DOM-related functions.
+- `react-scripts`: React scripts for creating a React app.
+- `axios`: Promise-based HTTP client for the browser and Node.js.
+
+## Acknowledgements
+
+- [MongoDB](https://www.mongodb.com/)
+- [Express](https://expressjs.com/)
+- [React](https://reactjs.org/)
+- [Node.js](https://nodejs.org/)
 
 ---
 
-## System Design
-
-### Database Schema Design
-
-- **Users Collection:** Stores user information such as `userId`, `username`, `email`, `password`, and roles.
-- **Roles Collection:** Defines roles such as `admin`, `reviewer`, `developer`, etc.
-- **PullRequests Collection:** Stores PR details like `title`, `description`, `requesterId`, `approvers` (array), `status`, etc.
-- **Reviews Collection:** Stores review comments for each PR.
-- **Approvals Collection:** Manages approval decisions for each PR.
-
----
-
-## Backend Setup
-
-1. **Clone the Repository:**
-
-   ```bash
-   git clone https://github.com/KLBramhananda/Request-management-system.git
-   cd Request-management-system/backend
-
+For further help or issues, don't hesitate to get in touch with bramhanandakl2002@gmail.com.
